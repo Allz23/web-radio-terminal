@@ -1,0 +1,36 @@
+<div class="page-holder d-flex align-items-center">
+    <div class="container">
+        <div class="row align-items-center py-5">
+            <div class="col-10 col-lg-7 mx-auto mb-lg-0">
+                <div class="pr-lg-5">
+                    <img src="img/Almacen Img.svg" alt="login-img" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-lg-5 px-lg-4">
+                {{!-- Espacio donde aparecerán los mensajes al usuario. --}}
+                <div class="row">
+                    <div class="col-12 white-space">
+                        {{!-- Mensajes de error usando los partials de Handlebars --}}
+                        {{> errors-pc}}
+                    </div>
+                </div>
+                <h1 class="text-base text-uppercase mb-4 h5 blue-text">Distribución</h1>
+                <h2 class="mb-4">¡Bienvenid@!</h2>
+                <p>Esperamos que su experiencia en nuestra web sea placentera.</p>
+                {{!-- Formulario de ingreso --}}
+                <form id="loginForm" action="/login" method="POST" class="mt-4">
+                    <div class="mb-4 md-form form">
+                        {{!-- La propiedad 'name' indica con que nombre el servidor recibira la informacion del formulario. --}}
+                        <input name="nombre" type="text" data-toggle="tooltip" id="userForm"
+                            class="form-control form-control-lg" autofocus>
+                        <label for="userForm" class="font-weight-light">Usuario</label>
+                    </div>
+                    <button type="submit" class="btn bg--royalBlue shadow px-5 text-white">
+                        Iniciar sesión
+                    </button>
+                </form>
+            </div>
+        </div>
+        <p class="mt-5 mb-0 text-white text-center">Diseñado por J&J</p>
+    </div>
+</div>
