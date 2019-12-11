@@ -1,9 +1,16 @@
+const {
+ mySQLHost,
+ mySQLPassword,
+ mySQLUser,
+ mySQLDB
+} = require("../config/config");
+
 module.exports = {
-  database: {
-    host: "localhost",
-    user: "root",
-    password: "12345678",
-    database: "db_distribucion",
-    insecureAuth: true
-  }
+ database: {
+  host: mySQLHost,
+  user: mySQLUser,
+  password: mySQLPassword,
+  database: mySQLDB,
+  insecureAuth: true
+ }
 };

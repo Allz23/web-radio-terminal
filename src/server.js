@@ -19,18 +19,18 @@ LocalStorage = new localStorage("./LocalStorage");
 // Dirigimos al servidor a la carpeta donde estan los archivos publicos
 app.use(express.static(__dirname + "/public/"));
 
-app.set("port", process.env.PORT || 3001); // Si tienes algun puerto, úsalo. Si no, conectate al puerto 3000.
+app.set("port", process.env.PORT || 3010); // Si tienes algun puerto, úsalo. Si no, conectate al puerto 3000.
 app.set("views", path.join(__dirname, "views"));
 // Le decimos a nuestro servidor donde se encuentran las carpetas de las vistas, y que motor de plantillas usara.
 app.engine(
-  ".hbs",
-  exphbs({
-    defaultLayout: "main",
-    layoutsDir: path.join(app.get("views"), "layouts"),
-    partialsDir: path.join(app.get("views"), "partials"),
-    extname: ".hbs",
-    helpers: require("./lib/handlebars")
-  })
+ ".hbs",
+ exphbs({
+  defaultLayout: "main",
+  layoutsDir: path.join(app.get("views"), "layouts"),
+  partialsDir: path.join(app.get("views"), "partials"),
+  extname: ".hbs",
+  helpers: require("./lib/handlebars")
+ })
 );
 app.set("view engine", ".hbs");
 
@@ -40,12 +40,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Configuramos las sesiones de Express.js, asi podemos guardar datos de los usuarios.
 app.use(
-  expSessions({
-    secret: "secretApp",
-    resave: true,
-    saveUninitialized: true,
-    store: new MySQLStore(database)
-  })
+ expSessions({
+  secret: "secretApp",
+  resave: true,
+  saveUninitialized: true,
+  store: new MySQLStore(database)
+ })
 );
 // Para poder agregar un usuario a la sesion, añadimos su configuracion
 app.use(passport.initialize());
@@ -55,14 +55,14 @@ app.use(flash());
 // Global variables
 // Creamos variables globales para los mensajes flash
 app.use((req, res, next) => {
-  // Estas variables almacenan el valor de los mensajes flash con el nombre asignado en .flash('')
-  res.locals.success_msg = req.flash("success_msg");
-  res.locals.error_msg = req.flash("error_msg");
-  // Los mensajes de error provenientes de passport.js se envian mediante una variable 'error'
-  res.locals.error = req.flash("error");
-  // Si quisieramos personalizar las vistas de los usuarios con, por ejemplo, su nombre de usuario, debemos crear una variable global. En el caso de passport.js, los datos del usuario se almacenan en el objeto req.
-  res.locals.user = req.user || null;
-  next();
+ // Estas variables almacenan el valor de los mensajes flash con el nombre asignado en .flash('')
+ res.locals.success_msg = req.flash("success_msg");
+ res.locals.error_msg = req.flash("error_msg");
+ // Los mensajes de error provenientes de passport.js se envian mediante una variable 'error'
+ res.locals.error = req.flash("error");
+ // Si quisieramos personalizar las vistas de los usuarios con, por ejemplo, su nombre de usuario, debemos crear una variable global. En el caso de passport.js, los datos del usuario se almacenan en el objeto req.
+ res.locals.user = req.user || null;
+ next();
 });
 // Routes: Se le daran a conocer las rutas al servidor.
 app.use(require("./routes/main"));
@@ -70,5 +70,5 @@ app.use(require("./routes/authentication"));
 
 // Start the server
 app.listen(app.get("port"), () => {
-  console.log("Server on port ", app.get("port"));
+ console.log("Server on port ", app.get("port"));
 });
