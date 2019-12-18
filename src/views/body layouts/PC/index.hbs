@@ -1,103 +1,104 @@
 {{!-- Todos los input deben estar afiliados a este formulario --}}
 <div class="row justify-content-center">
-    <div class="col-12">
-        <form class="my-5" method="POST" action="/parsing">
-            {{!-- Contenedor para los formularios --}}
-            <div class="col-12 mb-5">
-                <div class="card">
-                    {{!-- Fila contenedora del card header --}}
-                    <div class="row align-items-center">
-                        <div class="col-12">
-                            <div class="card-header shadow-sm d-flex">
-                                <div class="col-9 col-md-6">
-                                    <h3 class="h5 mb-0 text-card-responsive">
-                                        <span class="fa fa-search fa-1x"></span>
-                                        Filtros de búsqueda
-                                    </h3>
-                                </div>
-
-                                <div class="col-3 col-md-6">
-                                    {{!-- Usamos checkboxes para habilitar/deshabilitar filtros --}}
-                                    <div class="ml-auto form-inline">
-                                        {{!-- Necesitamos que este formulario sea hijo del elemento 'form' donde estan los filtros, para que al presionar el boton 'submit' los datos pasen al 'req.body' --}}
-                                        <div class="custom-control custom-checkbox mx-md-2 mx-sm-0">
-                                            <input id="fechaCheck" name="fechaCheck" type="checkbox"
-                                                class="custom-control-input" value="true">
-                                            <label for="fechaCheck" class="custom-control-label">Fecha</label>
-                                        </div>
-
-                                        <div class="custom-control custom-checkbox mx-md-2 mx-sm-0">
-                                            <input id="sesionCheck" name="sesionCheck" type="checkbox"
-                                                class="custom-control-input" value="true">
-                                            <label for="sesionCheck" class="custom-control-label">Sesión</label>
-                                        </div>
-
-                                        <div class="custom-control custom-checkbox mx-md-2 mx-sm-0">
-                                            <input id="nombreCheck" name="nombreCheck" type="checkbox"
-                                                class="custom-control-input" value="true">
-                                            <label for="nombreCheck" class="custom-control-label">Nombre</label>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="row justify-content-center">
-                            {{!-- Dado que el usuario puede buscar informacion especifica, creamos un formulario para establecer filtros de busqueda --}}
-                            <div class="form-row">
-                                {{!-- Selector de fecha, 'Desde:' --}}
-                                <div class="col-4 col-md-3">
-                                    <div class="form-goup">
-                                        <label for="datePicker">Fecha:</label>
-                                        <input id="date" type="text" class="form-control" name="datePicker"
-                                            data-dd-large="true" value="{{inputFecha}}">
-                                    </div>
-                                </div>
-
-                                <div class="col-4 col-md-3 offset-lg-1 offset-sm-0">
-                                    {{!-- Textbox para la sesion deseada --}}
-                                    <div class="form-group">
-                                        <label class="mr-sm-2" for="Sesion">N° de sesión:</label>
-                                        <input class="mr-sm-2 form-control" name="Sesion" id="Sesion" />
-                                    </div>
-                                </div>
-                                <div class="col-4 col-md-3">
-                                    {{!-- Selector para el nombre de los usuarios --}}
-                                    <div class="form-group">
-                                        <label class="mr-sm-2" for="Nombre">Nombre:</label>
-                                        <select class="custom-select mr-sm-2" name="Nombre" id="Nombre">
-                                            {{#each usuarios}}
-                                            <option value="{{nombre}}" selected>{{nombre}}</option>
-                                            {{/each}}
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-2 col-md-1 offset-5 offset-md-1 align-self-center">
-                                    <button type="submit" class="btn btn-primary">Buscar</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <div class="col-12">
+    <form class="my-5" method="POST" action="/parsing">
+      {{!-- Contenedor para los formularios --}}
+      <div class="col-12 mb-5">
+        <div class="card">
+          {{!-- Fila contenedora del card header --}}
+          <div class="row align-items-center">
+            <div class="col-12">
+              <div class="card-header shadow-sm d-flex">
+                <div class="col-9 col-md-6">
+                  <h3 class="h5 mb-0 text-card-responsive">
+                    <span class="fa fa-search fa-1x"></span>
+                    Filtros de búsqueda
+                  </h3>
                 </div>
+
+                <div class="col-3 col-md-6">
+                  {{!-- Usamos checkboxes para habilitar/deshabilitar filtros --}}
+                  <div class="ml-auto form-inline">
+                    {{!-- Necesitamos que este formulario sea hijo del elemento 'form' donde estan los filtros, para que al presionar el boton 'submit' los datos pasen al 'req.body' --}}
+                    <div class="custom-control custom-checkbox mx-md-2 mx-sm-0">
+                      <input id="fechaCheck" name="fechaCheck" type="checkbox"
+                        class="custom-control-input" value="true">
+                      <label for="fechaCheck" class="custom-control-label">Fecha</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mx-md-2 mx-sm-0">
+                      <input id="sesionCheck" name="sesionCheck" type="checkbox"
+                        class="custom-control-input" value="true">
+                      <label for="sesionCheck" class="custom-control-label">Sesión</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mx-md-2 mx-sm-0">
+                      <input id="nombreCheck" name="nombreCheck" type="checkbox"
+                        class="custom-control-input" value="true">
+                      <label for="nombreCheck" class="custom-control-label">Nombre</label>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </div>
-        </form>
-    </div>
+          </div>
+          <div class="card-body">
+            <div class="row justify-content-center">
+              {{!-- Dado que el usuario puede buscar informacion especifica, creamos un formulario para establecer filtros de busqueda --}}
+              <div class="form-row">
+                {{!-- Selector de fecha, 'Desde:' --}}
+                <div class="col-4 col-md-3">
+                  <div class="form-goup">
+                    <label for="datePicker">Fecha:</label>
+                    <input id="date" type="text" class="form-control" name="datePicker"
+                      data-dd-large="true" value="{{inputFecha}}">
+                  </div>
+                </div>
+
+                <div class="col-4 col-md-3 offset-lg-1 offset-sm-0">
+                  {{!-- Textbox para la sesion deseada --}}
+                  <div class="form-group">
+                    <label class="mr-sm-2" for="Sesion">N° de sesión:</label>
+                    <input class="mr-sm-2 form-control" name="Sesion" id="Sesion" />
+                  </div>
+                </div>
+                <div class="col-4 col-md-3">
+                  {{!-- Selector para el nombre de los usuarios --}}
+                  <div class="form-group">
+                    <label class="mr-sm-2" for="Nombre">Nombre:</label>
+                    <select class="custom-select mr-sm-2" name="Nombre" id="Nombre">
+                      {{#each usuarios}}
+                        <option value="{{nombre}}" selected>{{nombre}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                </div>
+                <div class="col-2 col-md-1 offset-5 offset-md-1 align-self-center">
+                  <button type="submit" class="btn btn-primary">Buscar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 {{!-- Separador de contenido --}}
 <div class="line mt-3"></div>
 {{!-- Tabla donde se mostrara el resultado de la consulta deseada. --}}
 <div class="row">
-    <div class="col-12">
-        <div class="text-center my-md-5">
-            <h4>
-                <i class="fa fa-grin-alt fa-2x my-2"></i>
-                <p><i>Bienvenid@ al sistema.</i></p>
-                <p>Para iniciar una busqueda, proporcione la información deseada en los filtros y luego presione buscar.
-                </p>
-            </h4>
-        </div>
+  <div class="col-12">
+    <div class="text-center my-md-5">
+      <h4>
+        <i class="fa fa-grin-alt fa-2x my-2"></i>
+        <p><i>Bienvenid@ al sistema.</i></p>
+        <p>Para iniciar una busqueda, proporcione la información deseada en los filtros y luego
+          presione buscar.
+        </p>
+      </h4>
     </div>
+  </div>
 </div>
 <div class="line mb-3"></div>

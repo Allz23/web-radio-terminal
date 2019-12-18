@@ -1,30 +1,84 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="navbar-brand">Distribución</div>
-    <div class="navbar-brand ml-auto d-lg-none">{{user.nombre}}</div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown pr-2 d-lg-block d-none">
-                <a class="nav-link dropdown-toggle mr-3 pr-2" href="#" id="navbarDropdownMenuLink" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    {{user.nombre}}
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/logout">
-                        <span class="fa fa-1x fa-door-open"></span>
-                        Cerrar Sesión
-                    </a>
+  <div class="navbar-brand">Distribución</div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown pr-2 d-lg-block d-none">
+        {{!-- Botón para llamar al modal --}}
+        <button class="btn btn-outline-primary btn-sm ml-auto" data-toggle="modal"
+          data-target="#modalChofer">
+          <span class="fa fa-1x fa-car-side"></span>
+          Añadir chofer
+        </button>
+
+        <div class="modal fade" id="modalChofer" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header border-bottom-0">
+                <h5 class="modal-title" id="modalChoferLabel">
+                  <i class="fa fa-1x fa-plus"></i>
+                  Ingrese los datos del chofer
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form action="/aggchofer" method="POST">
+                <div class="modal-body">
+                    {{> errors}}
+                  <div class="form-row">
+                    <div class="form-group col-6">
+                      <label for="nombreApellido">Nombre y apellido:</label>
+                      <input type="text" name="nombreC-chofer" class="form-control" id="nombreApellido"
+                        placeholder="Ingrese nombre y apellido">
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="cedula">Cédula:</label>
+                      <input type="text" class="form-control" id="cedula"
+                        placeholder="Ingrese cédula" name="cedula-chofer" >
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="cNomina">Código nomina:</label>
+                      <input type="text" class="form-control" id="cNomina"
+                        placeholder="Ingrese código nomina" name="nomina-chofer" >
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="cSap">Código SAP:</label>
+                      <input type="text" class="form-control" id="cSap"
+                        placeholder="Ingrese código SAP" name="sap-chofer">
+                    </div>
+                  </div>
                 </div>
-            </li>
-            <li class="nav-item my-2 d-lg-none d-md-block">
-                <a class="dropdown-item" href="/logout">
-                    <span class="fa fa-1x fa-door-open"></span>
-                    Cerrar Sesión
-                </a>
-            </li>
-        </ul>
-    </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button type="submit" class="btn btn-success">
+                    <i class="fa fa-1x fa-plus-circle"></i>
+                    Agregar
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        {{!-- Fin de modal --}}
+      </li>
+      <li class="nav-item dropdown pr-2 d-lg-block d-none">
+        <a class="nav-link dropdown-toggle mr-3 pr-2" href="#" id="navbarDropdownMenuLink"
+          role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{user.nombre}}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/logout">
+            <span class="fa fa-1x fa-door-open"></span>
+            Cerrar Sesión
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
 </nav>
