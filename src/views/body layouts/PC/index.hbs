@@ -1,6 +1,8 @@
 {{!-- Todos los input deben estar afiliados a este formulario --}}
 <div class="row justify-content-center">
   <div class="col-12">
+    {{> alerts-pc}}
+    {{> errors-pc}}
     <form class="my-5" method="POST" action="/parsing">
       {{!-- Contenedor para los formularios --}}
       <div class="col-12 mb-5">
