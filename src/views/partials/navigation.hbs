@@ -29,34 +29,34 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <form action="/aggchofer" method="POST">
+              <form action="/aggchofer" method="POST" name="choferForm"
+                onsubmit="return validarFormulario()">
                 <div class="modal-body">
-                    {{> errors}}
                   <div class="form-row">
                     <div class="form-group col-6">
                       <label for="nombreApellido">Nombre y apellido:</label>
-                      <input type="text" name="nombreC-chofer" class="form-control" id="nombreApellido"
-                        placeholder="Ingrese nombre y apellido">
+                      <input type="text" name="nombreC_chofer" class="form-control"
+                        id="nombreApellido" placeholder="Ingrese nombre y apellido">
                     </div>
                     <div class="form-group col-6">
                       <label for="cedula">Cédula:</label>
                       <input type="text" class="form-control" id="cedula"
-                        placeholder="Ingrese cédula" name="cedula-chofer" >
+                        placeholder="Ingrese cédula" name="cedula_chofer">
                     </div>
                     <div class="form-group col-6">
                       <label for="cNomina">Código nomina:</label>
                       <input type="text" class="form-control" id="cNomina"
-                        placeholder="Ingrese código nomina" name="nomina-chofer" >
+                        placeholder="Ingrese código nomina" name="nomina_chofer">
                     </div>
                     <div class="form-group col-6">
                       <label for="cSap">Código SAP:</label>
                       <input type="text" class="form-control" id="cSap"
-                        placeholder="Ingrese código SAP" name="sap-chofer">
+                        placeholder="Ingrese código SAP" name="sap_chofer">
                     </div>
                   </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                  <button type="submit" class="btn btn-success">
+                  <button type="submit" class="btn btn-success" value="submit">
                     <i class="fa fa-1x fa-plus-circle"></i>
                     Agregar
                   </button>
