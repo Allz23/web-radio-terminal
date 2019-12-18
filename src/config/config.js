@@ -6,8 +6,6 @@ if (result.error) {
  throw result.error;
 }
 
-console.log(result.parsed);
-
 module.exports = {
  mySQLHost: process.env.mysql_host,
  mySQLUser: process.env.mysql_user,
