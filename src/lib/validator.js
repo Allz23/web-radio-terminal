@@ -4,58 +4,58 @@ const { check, body, validationResult } = require("express-validator");
 
 // Describimos las reglas de validacion para el operario
 const reglasValidacionOperario = () => {
-  return [
-    // El campo 'cedula' no puede estar vacio.
-    body("cedula")
-      .not()
-      .isEmpty()
-      .withMessage("Complete todos los campos.")
-  ];
+ return [
+  // El campo 'cedula' no puede estar vacio.
+  body("cedula")
+   .not()
+   .isEmpty()
+   .withMessage("Complete todos los campos.")
+ ];
 };
 
 const reglasValidacionOperarioPC = () => {
-  return [
-    // El campo 'nombre' no puede estar vacio.
-    body("nombre")
-      .not()
-      .isEmpty()
-      .withMessage("Complete todos los campos.")
-  ];
+ return [
+  // El campo 'nombre' no puede estar vacio.
+  body("nombre")
+   .not()
+   .isEmpty()
+   .withMessage("Complete todos los campos.")
+ ];
 };
 
 // Ahora, validamos que no haya ningun error para poder continuar
 const validar = (req, res, next) => {
-  const errores = validationResult(req);
-  if (errores.isEmpty()) {
-    return next();
-  }
-  const extractedErrors = [];
-  // Si hay errores, se los mostramos al usuario.
-  errores.array().map(err => extractedErrors.push(err.msg));
-  req.flash("error", extractedErrors);
+ const errores = validationResult(req);
+ if (errores.isEmpty()) {
+  return next();
+ }
+ const extractedErrors = [];
+ // Si hay errores, se los mostramos al usuario.
+ errores.array().map(err => extractedErrors.push(err.msg));
+ req.flash("error", extractedErrors);
 
-  return res.render("body layouts/index");
+ return res.render("body layouts/index");
 };
 
 // Ahora, validamos que no haya ningun error para poder continuar
 const validarPC = (req, res, next) => {
-  const errores = validationResult(req);
-  if (errores.isEmpty()) {
-    return next();
-  }
-  const extractedErrors = [];
-  // Si hay errores, se los mostramos al usuario.
-  errores.array().map(err => extractedErrors.push(err.msg));
-  req.flash("error", extractedErrors);
+ const errores = validationResult(req);
+ if (errores.isEmpty()) {
+  return next();
+ }
+ const extractedErrors = [];
+ // Si hay errores, se los mostramos al usuario.
+ errores.array().map(err => extractedErrors.push(err.msg));
+ req.flash("error", extractedErrors);
 
-  return res.render("body layouts/PC/login", {
-    layout: "pc-login"
-  });
+ return res.render("body layouts/PC/login", {
+  layout: "pc-login"
+ });
 };
 
 module.exports = {
-  reglasValidacionOperario,
-  reglasValidacionOperarioPC,
-  validar,
-  validarPC
+ reglasValidacionOperario,
+ reglasValidacionOperarioPC,
+ validar,
+ validarPC
 };
