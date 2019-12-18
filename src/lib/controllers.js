@@ -45,5 +45,7 @@ controllers.consultaMySQL = async () => {
 
  return infoCubetas;
 };
+
+controllers.aggChofer = async schema => {};
 // --------------------------------------------------------------------------------------------
 module.exports = controllers;
