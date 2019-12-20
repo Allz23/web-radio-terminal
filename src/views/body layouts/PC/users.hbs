@@ -1,0 +1,38 @@
+    <div class="row align-items-center">
+      <div class="col-2">
+        {{!-- Botón de retorno a 'Home' --}}
+        <a href="/main" class="btn btn-outline-primary mt-2">
+          <i class="fa fa-arrow-left fa-1x"></i>
+        </a>
+      </div>
+    </div>
+
+    {{!-- Separador de contenido --}}
+    {{> alerts-pc}}
+    <div class="line mt-3"></div>
+    <table class="table table-hover table-borderless table-striped my-4">
+      <thead>
+        <tr>
+          <th class="text-center">Nombre</th>
+          <th class="text-center">Cedula</th>
+          <th class="text-center">¿Administrador?</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each usuarios}}
+          <tr>
+            <th scope="row" class="text-center">{{nombre}}</th>
+            <td class="text-center">{{cedula}}</td>
+            <td class="text-center">{{administrador admin}}</td>
+            <td class="text-center">
+              <a href="/delete/{{id_usuario}}" class="btn btn-outline-danger">
+                <i class="fa fa-1x fa-user-slash"></i> 
+                Eliminar
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    {{!-- Separador de contenido --}}
+    <div class="line mt-3"></div>

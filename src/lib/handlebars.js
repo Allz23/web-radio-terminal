@@ -5,8 +5,15 @@ const helpers = {};
 const pool = require("../database");
 
 helpers.formatoFecha = escaneado_en => {
-  console.log(escaneado_en);
-  return moment(escaneado_en).format("DD-MM-YYYY");
+ return moment(escaneado_en).format("DD-MM-YYYY");
+};
+
+helpers.administrador = admin => {
+ if (admin === 1) {
+  return (admin = "Sí");
+ } else {
+  return (admin = "No");
+ }
 };
 
 module.exports = helpers;

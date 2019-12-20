@@ -4,6 +4,7 @@ const router = Router();
 
 const pool = require("../database");
 const controllers = require("../lib/controllers");
+const { isLoggedIn, isLoggedInRT } = require("../lib/auth");
 // Ahora, creamos las rutas necesarias para nuestro sitio con manejadores de peticiones.
 // Rutas necesarias para la pagina principal --------------------------------------------------
 router.get("/", (req, res) => {
@@ -11,12 +12,24 @@ router.get("/", (req, res) => {
 });
 
 // Rutas hacia donde se redirigira el usaurio cuando inicie sesion
-router.get("/user", async (req, res) => {
+router.get("/user", isLoggedInRT, async (req, res) => {
  // Buscamos el valor de la sesion actual en el almacenamiento del navegador.
+ const choferActual = JSON.parse(LocalStorage.getItem("choferActual"));
  const sesionActual = JSON.parse(LocalStorage.getItem("sesionActual"));
+ console.log(sesionActual);
+ console.log(choferActual);
  const numeroSesion = sesionActual.id_sesion;
+ const cedulaChofer = choferActual.cedula;
  res.render("body layouts/user", {
-  numeroSesion
+  numeroSesion,
+  cedulaChofer
+ });
+});
+
+// Rutas hacia que visitara el usaurio para agregar el transportista actual.
+router.get("/transport", isLoggedInRT, async (req, res) => {
+ res.render("body layouts/chofer", {
+  layout: "main"
  });
 });
 
@@ -40,7 +53,7 @@ router.get("/logout", (req, res) => {
 });
 
 // Página inicial en version PC
-router.get("/main", async (req, res) => {
+router.get("/main", isLoggedIn, async (req, res) => {
  // Declaramos las variables que usaremos en la ruta
  let infoCubetas;
  // Creamos un objeto fecha, con el cual pasaremos el valor de la fehca actual al 'input'
@@ -60,7 +73,7 @@ router.get("/main", async (req, res) => {
  });
 });
 
-router.get("/tables", async (req, res) => {
+router.get("/tables", isLoggedIn, async (req, res) => {
  // Declaramos las variables que usaremos en la ruta
  let infoCubetas;
  // Creamos un objeto fecha, con el cual pasaremos el valor de la fehca actual al 'input'
@@ -108,6 +121,27 @@ router.post("/parsing", async (req, res) => {
  LocalStorage.setItem("selectores", JSON.stringify(selectores));
  //   Ya teniendo toda la informacion de los filtros, pasamos esa data a la vista que hace la consulta
  res.redirect("/tables");
+});
+
+// Ruta visitada cuando se desee ver la lista de usuarios registrados
+router.get("/users", isLoggedIn, async (req, res) => {
+ // Declaramos las variables que usaremos en la ruta
+ let usuarios = await pool.query(
+  "SELECT id_usuario, nombre, cedula, admin FROM usuarios"
+ );
+
+ res.render("body layouts/PC/users", {
+  layout: "pc",
+  usuarios
+ });
+});
+
+// Ruta creada para eliminar un usuario de la base de datos
+router.get("/delete/:id", async (req, res) => {
+ const { id } = req.params;
+ await pool.query("DELETE FROM usuarios WHERE id_usuario = ?", [id]);
+ req.flash("success_msg", "Usuario eliminado satisfactoriamente.");
+ res.redirect("/users");
 });
 // --------------------------------------------------------------------------------------------
 module.exports = router;

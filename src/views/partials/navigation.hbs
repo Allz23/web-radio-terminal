@@ -8,71 +8,137 @@
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav ml-auto">
-      <li class="nav-item dropdown pr-2 d-lg-block d-none">
-        {{!-- Botón para llamar al modal --}}
-        <button class="btn btn-outline-primary btn-sm ml-auto" data-toggle="modal"
-          data-target="#modalChofer">
-          <span class="fa fa-1x fa-car-side"></span>
-          Añadir chofer
-        </button>
+      {{#if user.admin}}
+        <li class="nav-item pr-2 d-lg-block d-none">
+          {{!-- Botón para llamar al modal de agregar chofer --}}
+          <button class="btn btn-outline-primary btn-sm ml-auto" data-toggle="modal"
+            data-target="#modalChofer">
+            <span class="fa fa-1x fa-car-side"></span>
+            Añadir chofer
+          </button>
 
-        <div class="modal fade" id="modalChofer" tabindex="-1" role="dialog"
-          aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header border-bottom-0">
-                <h5 class="modal-title" id="modalChoferLabel">
-                  <i class="fa fa-1x fa-plus"></i>
-                  Ingrese los datos del chofer
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <form action="/aggchofer" method="POST" name="choferForm"
-                onsubmit="return validarFormulario()">
-                <div class="modal-body">
-                  <div class="form-row">
-                    <div class="form-group col-6">
-                      <label for="nombreApellido">Nombre y apellido:</label>
-                      <input type="text" name="nombreC_chofer" class="form-control"
-                        id="nombreApellido" placeholder="Ingrese nombre y apellido">
-                    </div>
-                    <div class="form-group col-6">
-                      <label for="cedula">Cédula:</label>
-                      <input type="text" class="form-control" id="cedula"
-                        placeholder="Ingrese cédula" name="cedula_chofer">
-                    </div>
-                    <div class="form-group col-6">
-                      <label for="cNomina">Código nomina:</label>
-                      <input type="text" class="form-control" id="cNomina"
-                        placeholder="Ingrese código nomina" name="nomina_chofer">
-                    </div>
-                    <div class="form-group col-6">
-                      <label for="cSap">Código SAP:</label>
-                      <input type="text" class="form-control" id="cSap"
-                        placeholder="Ingrese código SAP" name="sap_chofer">
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer d-flex justify-content-center">
-                  <button type="submit" class="btn btn-success" value="submit">
-                    <i class="fa fa-1x fa-plus-circle"></i>
-                    Agregar
+          <div class="modal fade" id="modalChofer" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                  <h5 class="modal-title" id="modalChoferLabel">
+                    <i class="fa fa-1x fa-plus"></i>
+                    Ingrese los datos del chofer
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-              </form>
+                <form action="/aggchofer" method="POST" name="choferForm"
+                  onsubmit="return validarFormulario()">
+                  <div class="modal-body">
+                    <div class="form-row">
+                      <div class="form-group col-6">
+                        <label for="nombreApellido">Nombre y apellido:</label>
+                        <input type="text" name="nombreC_chofer" class="form-control"
+                          id="nombreApellido" placeholder="Ingrese nombre y apellido">
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="cedula">Cédula:</label>
+                        <input type="text" class="form-control" id="cedula"
+                          placeholder="Ingrese cédula" name="cedula_chofer">
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="cNomina">Código nomina:</label>
+                        <input type="text" class="form-control" id="cNomina"
+                          placeholder="Ingrese código nomina" name="nomina_chofer">
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="cSap">Código SAP:</label>
+                        <input type="text" class="form-control" id="cSap"
+                          placeholder="Ingrese código SAP" name="sap_chofer">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success" value="submit">
+                      <i class="fa fa-1x fa-plus-circle"></i>
+                      Agregar
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-        {{!-- Fin de modal --}}
-      </li>
+          {{!-- Fin de modal --}}
+        </li>
+
+        <li class="nav-item pr-2 d-lg-block d-none">
+          {{!-- Botón para llamar al modal de agregar usuario --}}
+          <button class="btn btn-outline-primary btn-sm ml-auto" data-toggle="modal"
+            data-target="#modalUser">
+            <span class="fa fa-1x fa-user-plus"></span>
+            Añadir usuario
+          </button>
+
+          <div class="modal fade" id="modalUser" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header border-bottom-0">
+                  <h5 class="modal-title" id="modalChoferLabel">
+                    <i class="fa fa-1x fa-plus"></i>
+                    Ingrese los datos del usuario
+                  </h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form action="/agguser" method="POST" name="userForm" onsubmit="">
+                  <div class="modal-body">
+                    <div class="form-row">
+                      <div class="form-group col-6">
+                        <label for="nombreU">Nombre y apellido:</label>
+                        <input type="text" name="nombreU" class="form-control" id="nombreU"
+                          placeholder="Ingrese nombre y apellido">
+                      </div>
+                      <div class="form-group col-6">
+                        <label for="cedulaU">Cédula:</label>
+                        <input type="text" class="form-control" id="cedulaU"
+                          placeholder="Ingrese cédula" name="cedulaU">
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="admin" name="admin"
+                          value="1">
+                        <label class="custom-control-label" for="admin">
+                          ¿Privilegios de administrador?
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success" value="submit">
+                      <i class="fa fa-1x fa-plus-circle"></i>
+                      Agregar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </li>
+      {{/if}}
+
       <li class="nav-item dropdown pr-2 d-lg-block d-none">
         <a class="nav-link dropdown-toggle mr-3 pr-2" href="#" id="navbarDropdownMenuLink"
           role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{user.nombre}}
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+          {{#if user.admin}}
+            <a class="dropdown-item" href="/users">
+              <span class="fa fa-1x fa-users"></span>
+              Usuarios
+            </a>
+            <div class="dropdown-divider"></div>
+          {{/if}}
+
           <a class="dropdown-item" href="/logout">
             <span class="fa fa-1x fa-door-open"></span>
             Cerrar Sesión

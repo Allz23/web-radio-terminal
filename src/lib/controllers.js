@@ -15,7 +15,7 @@ controllers.consultaMySQL = async () => {
   // CONDICIONES FILTRADAS DE CONSULTAS ------------------------------------------------------
   if (selectores.buscarFecha === "true" && consulta === true) {
    infoCubetas = await pool.query(
-    "SELECT u.nombre, u.cedula, c.codigo, c.escaneado_en, s.id_sesion FROM usuarios u INNER JOIN cubetas c  USING (id_usuario) INNER JOIN sesiones s USING (id_sesion) WHERE escaneado_en =?",
+    "SELECT u.nombre, u.cedula, c.codigo, c.escaneado_en, s.id_sesion, t.nombre_completo FROM usuarios u INNER JOIN cubetas c  USING (id_usuario) INNER JOIN sesiones s USING (id_sesion) INNER JOIN choferes t USING (id_chofer) WHERE escaneado_en =?",
     [filtros.fecha]
    );
    consulta = false;
@@ -23,7 +23,7 @@ controllers.consultaMySQL = async () => {
   // ----------------------------------------------------------------------------------------------
   if (selectores.buscarSesion === "true" && consulta === true) {
    infoCubetas = await pool.query(
-    "SELECT u.nombre, u.cedula, c.codigo, c.escaneado_en, s.id_sesion FROM usuarios u INNER JOIN cubetas c  USING (id_usuario) INNER JOIN sesiones s USING (id_sesion) WHERE id_sesion = ?",
+    "SELECT u.nombre, u.cedula, c.codigo, c.escaneado_en, s.id_sesion, t.nombre_completo FROM usuarios u INNER JOIN cubetas c  USING (id_usuario) INNER JOIN sesiones s USING (id_sesion)  INNER JOIN choferes t USING (id_chofer) WHERE id_sesion = ?",
     [filtros.sesion]
    );
    consulta = false;
@@ -31,7 +31,7 @@ controllers.consultaMySQL = async () => {
   // ----------------------------------------------------------------------------------------------
   if (selectores.buscarNombre === "true" && consulta === true) {
    infoCubetas = await pool.query(
-    "SELECT u.nombre, u.cedula, c.codigo, c.escaneado_en, s.id_sesion FROM usuarios u INNER JOIN cubetas c  USING (id_usuario) INNER JOIN sesiones s USING (id_sesion) WHERE nombre = ?",
+    "SELECT u.nombre, u.cedula, c.codigo, c.escaneado_en, s.id_sesion, t.nombre_completo FROM usuarios u INNER JOIN cubetas c  USING (id_usuario) INNER JOIN sesiones s USING (id_sesion) INNER JOIN choferes t USING (id_chofer) WHERE nombre = ?",
     [filtros.nombre]
    );
    consulta = false;
@@ -39,7 +39,7 @@ controllers.consultaMySQL = async () => {
   // ----------------------------------------------------------------------------------------------
  } else {
   infoCubetas = await pool.query(
-   "SELECT u.nombre, u.cedula, c.codigo, c.escaneado_en, s.id_sesion FROM usuarios u INNER JOIN cubetas c  USING (id_usuario) INNER JOIN sesiones s USING (id_sesion) WHERE id_sesion = 1"
+   "SELECT u.nombre, u.cedula, c.codigo, c.escaneado_en, s.id_sesion, t.nombre_completo FROM usuarios u INNER JOIN cubetas c  USING (id_usuario) INNER JOIN sesiones s USING (id_sesion) INNER JOIN choferes t USING (id_chofer) WHERE id_sesion = 1"
   );
  }
 

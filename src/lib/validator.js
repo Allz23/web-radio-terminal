@@ -23,6 +23,16 @@ const reglasValidacionOperarioPC = () => {
  ];
 };
 
+const reglasValidacionChofer = () => {
+ return [
+  // El campo 'nombre' no puede estar vacio.
+  body("cedulaC")
+   .not()
+   .isEmpty()
+   .withMessage("Complete todos los campos.")
+ ];
+};
+
 // Ahora, validamos que no haya ningun error para poder continuar
 const validar = (req, res, next) => {
  const errores = validationResult(req);
@@ -53,9 +63,27 @@ const validarPC = (req, res, next) => {
  });
 };
 
+// Ahora, validamos que no haya ningun error para poder continuar
+const validarChofer = (req, res, next) => {
+ const errores = validationResult(req);
+ if (errores.isEmpty()) {
+  return next();
+ }
+ const extractedErrors = [];
+ // Si hay errores, se los mostramos al usuario.
+ errores.array().map(err => extractedErrors.push(err.msg));
+ req.flash("error", extractedErrors);
+
+ return res.render("body layouts/chofer", {
+  layout: "main"
+ });
+};
+
 module.exports = {
  reglasValidacionOperario,
  reglasValidacionOperarioPC,
+ reglasValidacionChofer,
  validar,
- validarPC
+ validarPC,
+ validarChofer
 };

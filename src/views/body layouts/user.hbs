@@ -1,14 +1,21 @@
 <div class="top-line text-left">
-    <a href="/logout-rt" class="text-white btn-link"><i>Cerrar Sesión</i></a>
+  <a href="/logout-rt" class="text-white btn-link"><i>Cerrar Sesión</i></a>
 </div>
 <h2 class="text-small m-1">¡Bienvenid@, {{user.nombre}}!</h2>
 {{> alerts}}
 <form action="/agregar" method="post" class="form-rt">
-    <label for="codigo">Escanee código:</label>
-    <input type="text" name="codigo" value="" class="input-rt input-xl-rt" autofocus>
+  <label for="codigo">Escanee código:</label>
+  <input type="text" name="codigo" value="" class="input-rt input-xl-rt" autofocus>
 </form>
 
-<h3 class="text-small text-right">Sesión n°: {{numeroSesion}}</h3>
+<div class="flex-display">
+  <h3 class="text-small m-2">C.I Chofer: {{cedulaChofer}}</h3>
+  <h3 class="text-small m-2">Sesión n°: {{numeroSesion}}</h3>
+</div>
+<div class="flex-display">
+    <a href="/transport" class="btn-transport">Cambiar transportista</a>
+</div>
 <div class="footer">
-    <p>Recuerde <a href="/logout-rt" class="link-footer">cerrar sesión</a> al terminar de usar el sistema.</p>
+  <p>Recuerde <a href="/logout-rt" class="link-footer">cerrar sesión</a> al terminar de usar el
+    sistema.</p>
 </div>

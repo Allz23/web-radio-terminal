@@ -3,8 +3,10 @@ const { Router } = require("express");
 const {
  reglasValidacionOperario,
  reglasValidacionOperarioPC,
+ reglasValidacionChofer,
  validar,
- validarPC
+ validarPC,
+ validarChofer
 } = require("../lib/validator");
 const router = Router();
 const passport = require("passport");
@@ -12,19 +14,42 @@ const controllers = require("../lib/controllers");
 // Si vamos a usar metodos que requieran una conexion con la base de datos, necsitamos inportar el modulo
 const pool = require("../database");
 
-// Rutas que usaran los usuarios para utenticarse y poder iniciar sesion en el radio terminal
+// Rutas que usaran los usuarios para autenticarse y poder iniciar sesion en el radio terminal
 router.post(
  "/login-rt",
  reglasValidacionOperario(),
  validar,
  async (req, res, next) => {
   passport.authenticate("local.login-rt", {
-   successRedirect: "/user",
+   successRedirect: "/transport",
    failureRedirect: "/",
    failureFlash: true
   })(req, res, next);
  }
 );
+
+// Rutas que usaran los usuarios para enviar la informacion del chofer actual
+router.post(
+ "/chofer",
+ reglasValidacionChofer(),
+ validarChofer,
+ async (req, res, next) => {
+  let cedulaChofer = req.body.cedulaC;
+  const dataChofer = await pool.query(
+   "SELECT id_chofer, cedula FROM choferes WHERE cedula =?",
+   [cedulaChofer]
+  );
+  if (dataChofer.length > 0) {
+   const chofer = dataChofer[0];
+   LocalStorage.setItem("choferActual", JSON.stringify(chofer));
+   return res.redirect("/user");
+  } else {
+   req.flash("error", "Transportista no existe en la base de datos");
+   return res.redirect("/transport");
+  }
+ }
+);
+
 // Ruta para añadir el codigo escaneado a la base de datos
 router.post("/agregar", async (req, res, next) => {
  // Haremos la prueba de obtener la fecha actual y ver si podemos almacenar ese dato en la base de datos.
@@ -44,12 +69,13 @@ router.post("/agregar", async (req, res, next) => {
  const { codigo } = req.body;
  // Buscamos el valor de la sesion actual en el almacenamiento del navegador.
  const sesionActual = JSON.parse(LocalStorage.getItem("sesionActual"));
-
+ const choferActual = JSON.parse(LocalStorage.getItem("choferActual"));
  // Esquema de la nueva fila en la tabla.
  let nuevoCodigo = {
   codigo,
   id_usuario: req.user.id_usuario,
   id_sesion: sesionActual.id_sesion,
+  id_chofer: choferActual.id_chofer,
   escaneado_en: stringFecha
  };
  //   Verificamos que el codigo no haya sido guardado ya en esta sesion, y, si es asi, lo guardamos.
@@ -100,6 +126,30 @@ router.post("/aggchofer", async (req, res) => {
  } else {
   await pool.query("INSERT INTO choferes SET ?", [choferSchema]);
   req.flash("success_msg", "Usuario agregado exitosamente.");
+  return res.redirect("/main");
+ }
+});
+
+// Ruta para agregar un usuario a la base de datos
+router.post("/agguser", async (req, res) => {
+ let userSchema = {
+  nombre: req.body.nombreU,
+  cedula: req.body.cedulaU,
+  admin: req.body.admin
+ };
+ if (userSchema.admin === undefined) {
+  userSchema.admin = "0";
+ }
+ const usuario = await pool.query(
+  "SELECT cedula FROM usuarios WHERE cedula = ?",
+  [userSchema.cedula]
+ );
+ if (usuario.length > 0) {
+  req.flash("error_msg", "Usuario ya existe en la base de datos.");
+  return res.redirect("/main");
+ } else {
+  req.flash("success_msg", "Usuario agregado exitosamente.");
+  await pool.query("INSERT INTO usuarios SET ?", [userSchema]);
   return res.redirect("/main");
  }
 });
