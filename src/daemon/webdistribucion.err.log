@@ -55,3 +55,23 @@ TypeError: Cannot read property 'send' of null
     at ChildProcess.<anonymous> (C:\Users\proy-jacosta\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js:170:5)
     at ChildProcess.emit (events.js:198:13)
     at Process.ChildProcess._handle.onexit (internal/child_process.js:248:12)
+internal/modules/cjs/loader.js:638
+    throw err;
+    ^
+
+Error: Cannot find module 'C:\Users\proy-jacosta\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js'
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:636:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:562:25)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:831:12)
+    at startup (internal/bootstrap/node.js:283:19)
+    at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)
+internal/modules/cjs/loader.js:638
+    throw err;
+    ^
+
+Error: Cannot find module 'C:\Users\proy-jacosta\AppData\Roaming\npm\node_modules\node-windows\lib\wrapper.js'
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:636:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:562:25)
+    at Function.Module.runMain (internal/modules/cjs/loader.js:831:12)
+    at startup (internal/bootstrap/node.js:283:19)
+    at bootstrapNodeJSCore (internal/bootstrap/node.js:622:3)
