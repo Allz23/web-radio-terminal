@@ -40,11 +40,13 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# Package folders
+# Package folders and others
+LocalStorage/
+src/LocalStorage
 node_modules/
 
 # Enviroment variables
-.env
+.env    
 
 # pm2 files
 src/daemon/
