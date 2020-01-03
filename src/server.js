@@ -10,12 +10,28 @@ const localStorage = require("node-localstorage").LocalStorage;
 const bodyParser = require("body-parser");
 
 const { database } = require("./config/keys");
+const {
+ mySQLHost,
+ mySQLPassword,
+ mySQLUser,
+ mySQLDB
+} = require("./config/config");
+
 // Initializations: Inicializacion de componentes, variables, modulos, etc.
 const app = express();
 require("./lib/passport");
 LocalStorage = new localStorage("./LocalStorage");
 
 // Settings: Configuraciones necesarias del servidor
+// Configuraciones para almacenar la sesion en la base de datos.
+let sessionOptions = {
+ host: mySQLHost,
+ user: mySQLUser,
+ password: mySQLPassword,
+ database: mySQLDB,
+ insecureAuth: true,
+ endConnectionOnClose: true
+};
 // Dirigimos al servidor a la carpeta donde estan los archivos publicos
 app.use(express.static(__dirname + "/public/"));
 
@@ -42,9 +58,8 @@ app.use(bodyParser.json());
 app.use(
  expSessions({
   secret: "secretApp",
-  resave: true,
   saveUninitialized: true,
-  store: new MySQLStore(database)
+  resave: true
  })
 );
 // Para poder agregar un usuario a la sesion, añadimos su configuracion

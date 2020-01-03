@@ -47,9 +47,9 @@ router.get("/login", (req, res) => {
 });
 
 // Ruta que usará el usuario para cerrar la sesion en la PC
-router.get("/logout", (req, res) => {
- req.logOut();
- res.redirect("/login");
+router.get("/logout", async (req, res) => {
+ await req.logOut();
+ return res.redirect("/login");
 });
 
 // Página inicial en version PC

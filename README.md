@@ -58,9 +58,11 @@
 
 ## Acerca del Proyecto
 
-<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+Página web desarrollada en su momento para el área de devoluciones de Droguería Nena C.A.
 
-Página web desarrollada en su momento para el área de devoluciones de Droguería Nena C.A. - Usa Express.js como framework Backend y MySQL como base de datos para almacenar los codigos introducidos por los usuarios. - Emplea una verificación de inicio de sesión para los usuarios usando Passport.js (estrategia local). - Permite crear, leer y borrar los datos de los usuarios. En funcion a privilegios de administrador, ciertas caracteristicas (como añadir y borrar usuarios) son restringidas en el sitio.
+- Usa Express.js como framework Backend y MySQL como base de datos para almacenar los codigos introducidos por los usuarios.
+- Emplea una verificación de inicio de sesión para los usuarios usando Passport.js (estrategia local).
+- Permite crear, leer y borrar los datos de los usuarios. En funcion a privilegios de administrador, ciertas caracteristicas (como añadir y borrar usuarios) son restringidas en el sitio.
 
 ### Construido con
 
