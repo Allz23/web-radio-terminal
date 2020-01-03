@@ -78,13 +78,16 @@ Para obtener una copia local funcional del proyecto siga los siguientes pasos de
 Antes que nada, necesitará los siguientes paquetes de software:
 
 - Node.js (> v10)
-  Puede obtener la version mas actual del programa en la [pagina oficial](https://nodejs.org/es/).
+
+  Puede obtener la versión mas actual del programa en la [pagina oficial](https://nodejs.org/es/).
 
 - MySQL
+
   Se pueden instalar las herramientas necesarias para el desarrollo con el [MySQL Community Installer](https://dev.mysql.com/downloads/installer/). Tenga en consideracion que no todas las herramientas son necesarias, sólo MySQL Server, y el Workbench si se desea un entorno grafico para manejar la base de datos. Tambien se puede usar el servidor MySQL que viene en el paquete [XAMPP](https://www.apachefriends.org/es/download.html).
 
 - Editor de texto para el desarrollo
-  Recomiendo [Vuisual Studio Code](https://code.visualstudio.com/download) por su excelente integración con Git. Pero cualquier editor sirve.
+
+  Recomiendo [Visual Studio Code](https://code.visualstudio.com/download) por su excelente integración con Git. Pero cualquier editor sirve.
 
 ### Instalación
 
