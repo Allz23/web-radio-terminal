@@ -1,7 +1,3 @@
-# web-radio-terminal
-
-Página web desarrollada para el área de devoluciones de Droguería Nena C.A. Usa MySQL para almacenar los códigos de las cubetas escaneadas, y permite a los usuarios iniciar sesión con su cédula, luego, pueden filtrar la información y descargarla en formato .xlsx (Excel).
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -11,12 +7,12 @@ Página web desarrollada para el área de devoluciones de Droguería Nena C.A. U
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-[![Contributors][contributors-shield]][contributors-url]
+<!-- [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![LinkedIn][linkedin-shield]][linkedin-url] -->
 
 <!-- PROJECT LOGO -->
 <!-- <br />
@@ -62,41 +58,46 @@ Página web desarrollada para el área de devoluciones de Droguería Nena C.A. U
 
 ## Acerca del Proyecto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
 Página web desarrollada en su momento para el área de devoluciones de Droguería Nena C.A. - Usa Express.js como framework Backend y MySQL como base de datos para almacenar los codigos introducidos por los usuarios. - Emplea una verificación de inicio de sesión para los usuarios usando Passport.js (estrategia local). - Permite crear, leer y borrar los datos de los usuarios. En funcion a privilegios de administrador, ciertas caracteristicas (como añadir y borrar usuarios) son restringidas en el sitio.
 
-### Built With
+### Construido con
 
-- []()
-- []()
-- []()
+- [Bootstrap](http://getbootstrap.com/)
+- [jQuery](https://jquery.com)
+- [Express](https://expressjs.com/es/)
 
 <!-- GETTING STARTED -->
 
-## Getting Started
+## Empezando
 
-To get a local copy up and running follow these simple steps.
+Para obtener una copia local funcional del proyecto siga los siguientes pasos de ejemplo.
 
-### Prerequisites
+### Prerequisitos
 
-This is an example of how to list things you need to use the software and how to install them.
+Antes que nada, necesitará los siguientes paquetes de software:
 
-- npm
+- Node.js (> v10)
+  Puede obtener la version mas actual del programa en la [pagina oficial](https://nodejs.org/es/).
+
+- MySQL
+  Se pueden instalar las herramientas necesarias para el desarrollo con el [MySQL Community Installer](https://dev.mysql.com/downloads/installer/). Tenga en consideracion que no todas las herramientas son necesarias, sólo MySQL Server, y el Workbench si se desea un entorno grafico para manejar la base de datos. Tambien se puede usar el servidor MySQL que viene en el paquete [XAMPP](https://www.apachefriends.org/es/download.html).
+
+- Editor de texto para el desarrollo
+  Recomiendo [Vuisual Studio Code](https://code.visualstudio.com/download) por su excelente integración con Git. Pero cualquier editor sirve.
+
+### Instalación
+
+1. Clone el repositorio en su equipo en el directorio de su preferencia usando el comando
 
 ```sh
-npm install npm@latest -g
+git clone https://github.com/Allz23/web-radio-terminal.git
 ```
 
-### Installation
+2. Instale las dependencias
 
-1. Clone the repo
-
-```sh
-git clone https://github.com/Allz23/repo.git
-```
-
-2. Install NPM packages
+Una vez haya clonado el repositorio, ubiquese dentro de la carpeta del mismo con el terminal de su sistema operativo y use el comando:
 
 ```sh
 npm install
@@ -110,37 +111,19 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
-<!-- ROADMAP -->
-
-## Roadmap
-
-See the [open issues](https://github.com/Allz23/repo/issues) for a list of proposed features (and known issues).
-
-<!-- CONTRIBUTING -->
-
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 <!-- LICENSE -->
 
-## License
+## Licencia
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distribuido bajo la licencia MIT. Vea `LICENSE` para mayor información.
 
 <!-- CONTACT -->
 
-## Contact
+## Contacto
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Jacinto Acosta - jacintoac24@gmail.com
 
-Project Link: [https://github.com/Allz23/repo](https://github.com/Allz23/repo)
+Link del proyecto: [https://github.com/Allz23/web-radio-terminal](https://github.com/Allz23/web-radio-terminal)
 
 <!-- ACKNOWLEDGEMENTS -->
 
