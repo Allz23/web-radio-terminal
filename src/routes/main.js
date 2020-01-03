@@ -16,8 +16,6 @@ router.get("/user", isLoggedInRT, async (req, res) => {
  // Buscamos el valor de la sesion actual en el almacenamiento del navegador.
  const choferActual = JSON.parse(LocalStorage.getItem("choferActual"));
  const sesionActual = JSON.parse(LocalStorage.getItem("sesionActual"));
- console.log(sesionActual);
- console.log(choferActual);
  const numeroSesion = sesionActual.id_sesion;
  const cedulaChofer = choferActual.cedula;
  res.render("body layouts/user", {
@@ -49,12 +47,13 @@ router.get("/login", (req, res) => {
 // Ruta que usará el usuario para cerrar la sesion en la PC
 router.get("/logout", async (req, res) => {
  await req.logOut();
+ console.log(req.user);
  return res.redirect("/login");
 });
 
 // Página inicial en version PC
 router.get("/main", isLoggedIn, async (req, res) => {
- // Declaramos las variables que usaremos en la ruta
+ // Declaramos las variables qu e usaremos en la ruta
  let infoCubetas;
  // Creamos un objeto fecha, con el cual pasaremos el valor de la fehca actual al 'input'
  let objetoFecha = new Date();
