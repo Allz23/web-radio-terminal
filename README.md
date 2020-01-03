@@ -47,9 +47,6 @@
 - [Empezando](#empezando)
   - [Prerequisitos](#prerequisitos)
   - [Instalación](#instalacion)
-- [Uso](#uso)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
 - [Licencia](#licencia)
 - [Contacto](#contacto)
 - [Reconocimientos](#reconocimientos)
@@ -121,7 +118,7 @@ Link del proyecto: [https://github.com/Allz23/web-radio-terminal](https://github
 
 <!-- ACKNOWLEDGEMENTS -->
 
-## Acknowledgements
+## Reconocimientos
 
 - [Font Awesome](https://fontawesome.com)
 - [Material Design Bootstrap](https://mdbootstrap.com/docs/jquery/getting-started/download/)
