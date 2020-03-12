@@ -91,6 +91,8 @@ Antes que nada, necesitará los siguientes paquetes de software:
 
 ### Instalación
 
+Los comandos que se explican a continuación se ejecutan en la consola de Windows, ya sea _**cmd**_ o _**PowerShell**_, dependiendo de la preferencia del usuario. 
+
 1. Clone el repositorio en su equipo en el directorio de su preferencia usando el comando:
 
 ```sh
