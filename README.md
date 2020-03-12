@@ -104,6 +104,46 @@ Una vez haya clonado el repositorio, ubiquese dentro de la carpeta del mismo con
 ```sh
 npm install
 ```
+Otro paso importante a tener en cuenta es el servidor donde vamos a desplegar nuestra página, en éste momento, no disponemos de un servidor LINUX para desplegar, sólo una máquina virtual de Windows, asi que, debemos asegurarnos que nuestro servidor se mantenga corriendo en la máquina virtual como un servicio. Para ello, usaremos el paquete PM2:
+
+```sh
+npm install pm2@latest -g
+```
+La bandera "-g" nos indica que el paquete será instalado de manera global en nuestro equipo, y se podrá acceder a sus comandos desde cualquier directorio.
+
+### Iniciando el servicio
+
+Para lograr ésto, debemos saber donde esta localizado el directorio raíz (/src) de nuestra página/app y localizar el archivo _**server.js**_, en la terminal usamos los siguientes comandos:
+
+```sh
+# Con la bandera '--watch' reiniciaremos la aplicación cada vez que haya algún cambio en el directorio actual + todas las subcarpetas del mismo. Y ademas, ignorará los cambios en el directorio 'node_modules/'.
+pm2 start /directorio/src/server.js --watch --ignore-watch="node_modules"
+```
+
+Algunos comandos útiles de PM2:
+
+```sh
+# Modo Fork
+pm2 start app.js --name my-api # Darle un nombre al proceso por iniciar.
+
+# Listar
+
+pm2 list               # Muestra el estado de todos los procesos.
+pm2 jlist              # Imprime en pantalla todos los procesos en formato JSON crudo.
+pm2 prettylist         # Imprime todos los procesos actuales en formato JSON bonito.
+
+# Acciones
+
+pm2 stop all           # Detiene todos los procesos.
+pm2 restart all        # reinicia todos los procesos.
+
+pm2 stop 0             # Detiene el proceso con el ID 0
+pm2 restart 0          # Reinicia el proceso con el ID 0
+
+pm2 delete 0           # Elimina el proceso con el ID 0
+pm2 delete all         # Elimina todos los procesos de la lista de PM2
+```
+Para mayor información acerca de PM2 puede dirigirse a la [documentación oficial](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/)
 
 <!-- LICENSE -->
 
