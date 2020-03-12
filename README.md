@@ -115,11 +115,11 @@ La bandera "-g" nos indica que el paquete será instalado de manera global en nu
 
 ### Iniciando el servicio
 
-Para lograr ésto, debemos saber donde esta localizado el directorio raíz (/src) de nuestra página/app y localizar el archivo **server.js**, en la terminal usamos los siguientes comandos:
+Para lograr ésto, debemos saber donde esta localizado el directorio raíz (/src) de nuestra página/app, ubicarnos en el, y localizar el archivo **server.js**, en la terminal usamos los siguientes comandos:
 
 ```sh
 # Con la bandera '--watch' reiniciaremos la aplicación cada vez que haya algún cambio en el directorio actual + todas las subcarpetas del mismo. Y ademas, ignorará los cambios en el directorio 'node_modules/'.
-pm2 start /directorio/src/server.js --watch --ignore-watch="node_modules"
+pm2 start server.js --watch --ignore-watch="node_modules"
 ```
 
 Algunos comandos útiles de PM2:
