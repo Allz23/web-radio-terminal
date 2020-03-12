@@ -55,7 +55,7 @@
 
 ## Acerca del Proyecto
 
-Página web desarrollada en su momento para el área de devoluciones de Droguería Nena C.A.
+Página web desarrollada para el área de devoluciones de Droguería Nena C.A.
 
 - Usa Express.js como framework Backend y MySQL como base de datos para almacenar los codigos introducidos por los usuarios.
 - Emplea una verificación de inicio de sesión para los usuarios usando Passport.js (estrategia local).
@@ -79,11 +79,11 @@ Antes que nada, necesitará los siguientes paquetes de software:
 
 - Node.js (> v10)
 
-  Puede obtener la versión mas actual del programa en la [pagina oficial](https://nodejs.org/es/).
+  Puede obtener la versión más actual del programa en la [pagina oficial](https://nodejs.org/es/).
 
 - MySQL
 
-  Se pueden instalar las herramientas necesarias para el desarrollo con el [MySQL Community Installer](https://dev.mysql.com/downloads/installer/). Tenga en consideracion que no todas las herramientas son necesarias, sólo MySQL Server, y el Workbench si se desea un entorno grafico para manejar la base de datos. Tambien se puede usar el servidor MySQL que viene en el paquete [XAMPP](https://www.apachefriends.org/es/download.html).
+  Se pueden instalar las herramientas necesarias para el desarrollo con el [MySQL Community Installer](https://dev.mysql.com/downloads/installer/). Tenga en consideración que no todas las herramientas son necesarias, sólo MySQL Server, y el Workbench si se desea un entorno gráfico para manejar la base de datos. También se puede usar el servidor MySQL que viene en el paquete [XAMPP](https://www.apachefriends.org/es/download.html).
 
 - Editor de texto para el desarrollo
 
@@ -91,7 +91,7 @@ Antes que nada, necesitará los siguientes paquetes de software:
 
 ### Instalación
 
-1. Clone el repositorio en su equipo en el directorio de su preferencia usando el comando
+1. Clone el repositorio en su equipo en el directorio de su preferencia usando el comando:
 
 ```sh
 git clone https://github.com/Allz23/web-radio-terminal.git
@@ -99,12 +99,12 @@ git clone https://github.com/Allz23/web-radio-terminal.git
 
 2. Instale las dependencias
 
-Una vez haya clonado el repositorio, ubiquese dentro de la carpeta del mismo con el terminal de su sistema operativo y use el comando:
+Una vez haya clonado el repositorio, ubíquese dentro de la carpeta del mismo con el terminal de su sistema operativo y use el comando:
 
 ```sh
 npm install
 ```
-Otro paso importante a tener en cuenta es el servidor donde vamos a desplegar nuestra página, en éste momento, no disponemos de un servidor LINUX para desplegar, sólo una máquina virtual de Windows, asi que, debemos asegurarnos que nuestro servidor se mantenga corriendo en la máquina virtual como un servicio. Para ello, usaremos el paquete PM2:
+Otro paso importante a tener en cuenta es el servidor donde vamos a desplegar nuestra página, en éste momento, no disponemos de un servidor LINUX para desplegar, sólo una máquina virtual de Windows, asi que, debemos asegurarnos que nuestro servidor se mantenga corriendo en la máquina virtual como un servicio. Para ello, usaremos el paquete PM2, el cual podemos instalar con el comando:
 
 ```sh
 npm install pm2@latest -g
@@ -113,7 +113,7 @@ La bandera "-g" nos indica que el paquete será instalado de manera global en nu
 
 ### Iniciando el servicio
 
-Para lograr ésto, debemos saber donde esta localizado el directorio raíz (/src) de nuestra página/app y localizar el archivo _**server.js**_, en la terminal usamos los siguientes comandos:
+Para lograr ésto, debemos saber donde esta localizado el directorio raíz (/src) de nuestra página/app y localizar el archivo **server.js**, en la terminal usamos los siguientes comandos:
 
 ```sh
 # Con la bandera '--watch' reiniciaremos la aplicación cada vez que haya algún cambio en el directorio actual + todas las subcarpetas del mismo. Y ademas, ignorará los cambios en el directorio 'node_modules/'.
