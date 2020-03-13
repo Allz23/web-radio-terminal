@@ -111,7 +111,7 @@ Otro paso importante a tener en cuenta es el servidor donde vamos a desplegar nu
 ```sh
 npm install pm2@latest -g
 ```
-La bandera "-g" nos indica que el paquete será instalado de manera global en nuestro equipo, y se podrá acceder a sus comandos desde cualquier directorio.
+La bandera "-g" nos indica que el paquete será instalado de manera global en el equipo, y se podrá acceder a sus comandos desde cualquier directorio.
 
 ### Iniciando el servicio
 
@@ -146,6 +146,13 @@ pm2 delete 0           # Elimina el proceso con el ID 0
 pm2 delete all         # Elimina todos los procesos de la lista de PM2
 ```
 Para mayor información acerca de PM2 puede dirigirse a la [documentación oficial](https://pm2.keymetrics.io/docs/usage/pm2-doc-single-page/)
+
+#### Acerca del archivo *.env-sample*
+
+Los archivos *.env* nos ayudan para poder desplegar nuestras aplicaciones en distintos entornos (servidores, PCs personales de prueba, etc.). Antes de desplegar, o realizar pruebas con el código, asegurese de modificar las variables de entorno contenidas en éste archivo a las correspondientes a su sistema, luego de hacerlo, cambie el nombre del archivo a _**.env**_, dado que el paquete **dotenv** tratará de ubicar un archivo con ése nombre. 
+
+  #### IMPORTANTE
+Si se desea desplegar la página usando el paquete _**pm2**_, la ubicación del archivo _.env_ debe cambiarse al directorio raíz      (mover el archivo a la carpeta **src/**). 
 
 <!-- LICENSE -->
 
