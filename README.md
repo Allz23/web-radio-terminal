@@ -88,10 +88,14 @@ Antes que nada, necesitará los siguientes paquetes de software:
 - Editor de texto para el desarrollo
 
   Recomiendo [Visual Studio Code](https://code.visualstudio.com/download) por su excelente integración con Git. Pero cualquier editor sirve.
+  
+- Git
+
+  Necesitamos instalar el paquete de Git para poder usar los comandos que nos ofrece en nuestro sistema. La version mas reciente se puede descargar de su [página oficial](https://git-scm.com/downloads).
 
 ### Instalación
 
-Los comandos que se explican a continuación se ejecutan en la consola de Windows, ya sea _**cmd**_ o _**PowerShell**_, dependiendo de la preferencia del usuario. 
+Los comandos que se explican a continuación se ejecutan en la consola de Windows, ya sea _**cmd**_ o _**PowerShell**_, dependiendo de la preferencia del usuario y la configuración de su sistema. 
 
 1. Clone el repositorio en su equipo en el directorio de su preferencia usando el comando:
 
